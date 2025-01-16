@@ -7,7 +7,7 @@ package 상속_개념;
 
 // 1. 캡슐화(encapsulation) : 객체를 독립적으로 만든다. private 필드, getter, setter
 // 2. 상속(inheritance) : 자식클래스가 부모클래스의 속성(필드 + 메서드)을 상속받는다 
-// 3. 추상화(abstract) :
+// 3. 추상화(abstract) : <-> 구체화 / 미완성된 메서드가 단 한개라도 존재하면 추상클래스 
 // 4. 다형성(ploymorphism): 
 
 
