@@ -14,15 +14,25 @@ public class _Main {
 		MyChicken store4 = new MyChicken("강남");
 		MyChicken store5 = new MyChicken("신촌");
 		
+		MyCafe store6 = new MyCafe("제주도" , false);
+		MyCafe store7 = new MyCafe("강남" , true);
+		MyCafe store8 = new MyCafe("압구정" , true);
+		
+		MyBrand[] myStores = {store1, store2, store3, store4 , store5,store6, store7, store8};
+		
+		System.out.println();
+		for(MyBrand store : myStores) {
+			//MyBakery mystore = (MyBakery)store;
+			if(store instanceof MyBakery) {
+				MyBakery mystore = (MyBakery)store;
+				
+				store.takeOrder();
+			}
+		}
+		
 		
 		
 
-		store1.takeOrder();
-		store2.takeOrder();
-		store3.takeOrder();
-		store4.takeOrder();
-		store5.takeOrder();
-		
 	}
 
 }
