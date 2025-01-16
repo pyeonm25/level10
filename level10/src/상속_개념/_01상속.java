@@ -40,6 +40,7 @@ class C extends A {
 		this(); // 자기자신의 기본생성자 
 		this.e = e;
 		this.f = f;
+		
 	}
 	
 	
