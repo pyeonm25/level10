@@ -60,6 +60,20 @@ public class _01enum개념 {
 		
 		System.out.println(Week.MON);
 		
+		Week today = Week.THR; 
+		
+		switch(today) {
+		
+		case MON: System.out.println("월요일입니다"); break;
+		case TUE: System.out.println("화요일입니다"); break;
+		case WED: System.out.println("수요일입니다"); break;
+		case THR: System.out.println("목요일입니다"); break;
+		case FIR: System.out.println("금요일입니다"); break;
+		case SAT: System.out.println("토요일입니다"); break;
+		case SUN: System.out.println("일요일입니다"); break;
+			
+		}
+		
 		
 	}
 }
