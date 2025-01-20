@@ -34,7 +34,11 @@ public class Controller {
 			// 추가하는 기능 DAO
 			getAction(Menu.INSERT).excute();
 			
-		}else {
+		}else if(sel ==2) {
+			getAction(Menu.DELETE).excute();
+		}
+		
+		else {
 			break;
 		}
 		break;
