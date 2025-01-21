@@ -7,6 +7,9 @@ package _12콜랙션멤버;
 // DAO : 여러개의 맴버들의 기능 
 // VO(model) : Member
 
+// 사용자 상호작용 페이지라고 생각하면 편하다 
+// 사용자에게 값 전달 받고 사용자에게 값 전달 해주는 클래스 
+
 public class ActionInsert implements Action {
 
 	@Override
