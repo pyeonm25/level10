@@ -12,15 +12,22 @@ public class ActionInsert implements Action {
 	@Override
 	public void excute() {
 
+		MemberDAO dao = MemberDAO.getInstance();
+		Utils utils = Utils.getInstance();
 		System.out.println("==== [ 회원가입 ] ==== ");
 		
 		// 추가하는 dao 연결 
-		String id = "test";
-		String pw ="1234";
-		String name ="테스트1";
+		String id = utils.getStrValue("ID>> ");
+		String pw =utils.getStrValue("PW>> ");
+		String name =utils.getStrValue("NAME>> ");
 		
-		dao.addMember(id , pw , name);
+		if(!dao.isValidId(id)) {
+			System.out.println("이미 사용하는 아이디입니다");
+			return;
+		}
 		
+		dao.addAMember(id , pw , name);
+		dao.printAllMember();
 		System.out.println("회원 가입 완료");
 	}
 
