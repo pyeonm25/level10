@@ -68,6 +68,7 @@ public class _01함수형프로그래밍개념 {
 		//이미 만들어진 익명클래스 접근 할때  (매개변수) -> 안에 불러올 함수  ;
 		
 		Test result3 = array -> result2.getSum(arr); 
+		
 		System.out.println(result3.getSum(arr));
 		
 		
