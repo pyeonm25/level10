@@ -12,6 +12,7 @@ public class _03문자열향상2 {
 				.append("안녕하세요2")
 				.append("안녕하세요3");
 		
+		System.out.println(builder1);
 
 		StringBuilder builder2 = new StringBuilder("0123456789");
 		System.out.println(builder2.toString());
@@ -34,9 +35,9 @@ public class _03문자열향상2 {
 		System.out.println(result);
 
 		// String, StringBuffer, StringBuilder
-//		CharSequence cs1 = "ABC";
-//		CharSequence cs2 = new StringBuffer();
-//		CharSequence cs3 = new StringBuilder();
+		CharSequence cs1 = "ABC";
+		CharSequence cs2 = new StringBuffer();
+		CharSequence cs3 = new StringBuilder();
 		
 		String[] str = {"사자", "호랑이", "토끼", "뱀"};
 		StringJoiner str1 = new StringJoiner(",", "<", ">");
