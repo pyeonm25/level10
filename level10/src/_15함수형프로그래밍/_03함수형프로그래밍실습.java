@@ -7,6 +7,8 @@ class Calculate{
 }
 
 
+
+
 public class _03함수형프로그래밍실습 {
 	public static void main(String[] args) {
 		Calculate cal = new Calculate();
@@ -14,7 +16,8 @@ public class _03함수형프로그래밍실습 {
 		System.out.println(cal.subtract(10, 20));
 		System.out.println(cal.multiply(10, 20));
 		
-		//각각 함수형 인터페이스 Add , Subtract , Multiply 만들어서 위와 같은 결과 실행 
+		//함수형 인퍼페이스 CalFunction 만들어서 위와 같은 결과 실행 
+		// 각각 인터페이스 변수 add, subtract, multiply 호출 
 		
 	}
 }
