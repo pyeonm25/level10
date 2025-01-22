@@ -23,6 +23,33 @@ public class _06스트림실습_기본 {
 	}
 	public static void main(String[] args) {
 		
+		
+		List<Item> itemList = setData();
+		System.out.println(itemList);
+		
+		// 문제 1번 전체 출력
+		System.out.println("=====[ 1 ]=====");
+		
+		// 문제 2번 중복된 데이터 제거 후 출력
+		System.out.println("=====[ 2 ]=====");
+		
+		// 문제 3번 카테고리가 과자인 itemList 출력
+		System.out.println("=====[ 3 ]=====");
+		
+		// 문제 4번 카테고리가 고기인 item 갯수 출력
+		System.out.println("=====[ 4 ]=====");
+		
+		// 문제 5번 가격이 10000원 이상인 값들의 ArrayList<Item> 만들기
+		System.out.println("=====[ 5 ]=====");
+		
+		// 문제 6번 카테고리가 고기인 아이템 이름만 가져와서 ArrayList<String>으로 만들기
+		System.out.println("=====[ 6 ]=====");
+		
+		// 문제 7번 아이템 번호로 정렬 후 출력
+		System.out.println("=====[ 7 ]=====");
+		
+		// 문제 8번 아이템 가격 순으로 정렬
+		System.out.println("=====[ 8 ]=====");
 	}
 
 }

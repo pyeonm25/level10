@@ -57,7 +57,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [itemNo=" + itemNo + ", category=" + category + ", name=" + name + ", price=" + price + "]";
+		return String.format("%s %s %s %d원 \n", itemNo, category,name,price);
 	}
 	
 	
