@@ -1,5 +1,7 @@
 package _15함수형프로그래밍;
 
+import java.util.Objects;
+
 public class Item {
 
 	private int itemNo;
@@ -54,10 +56,31 @@ public class Item {
 		this.price = price;
 	}
 
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(category, itemNo, name, price);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		return Objects.equals(category, other.category) && itemNo == other.itemNo && Objects.equals(name, other.name)
+				&& price == other.price;
+	}
+
 
 	@Override
 	public String toString() {
-		return String.format("%s %s %s %d원 \n", itemNo, category,name,price);
+		return String.format("%s %s %s %d원", itemNo, category,name,price);
 	}
 	
 	
