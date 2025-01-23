@@ -52,11 +52,16 @@ public class _04쓰레드이론04 {
 				if(input.equals("같이")) {
 					System.out.println("나도 같이 껴줘");
 					try {
-						mySongThread.join(3000);
+						mySongThread.join(); // 비동기 동기로 만들어줌 
+						
+						for(int i = 1; i < 100; i+=1) {
+							System.out.println(i);
+							Thread.sleep(10);
+						}
+						
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					System.out.println("------");
 					break;
 				}
 				
