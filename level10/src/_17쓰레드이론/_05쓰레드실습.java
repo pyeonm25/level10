@@ -1,11 +1,12 @@
 package _17쓰레드이론;
 
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 class InputMachine implements Runnable{
 
 	private Scanner scan = new Scanner(System.in);
-	
+	public static char input;
 	@Override
 	public void run() {
 		System.out.println(">>>>");
@@ -28,6 +29,10 @@ class StopWatch implements Runnable{
 
 public class _05쓰레드실습 {
 	public static void main(String[] args) {
+		long preTime = System.currentTimeMillis();
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+	
+		System.out.println(	sdf.format(preTime));
 	}
 }
