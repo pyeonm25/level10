@@ -30,9 +30,9 @@ public class CoffeeMachine {
 			cups--;
 		}
 
-		notifyAll();
+		notifyAll(); // 다른 이 메서드를 접근하고싶어하는 쓰레드에게 사용 완료를 알리는 메서드 
 		try {
-			wait();
+			wait(); // 이 쓰레드 사용 종료 
 		} catch (InterruptedException e) {
 		}
 	}

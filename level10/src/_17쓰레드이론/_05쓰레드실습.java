@@ -1,75 +1,135 @@
 package _17쓰레드이론;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 
-class InputMachine implements Runnable { // 입력기
+class Timer implements Runnable {
 
-	private Scanner scan = new Scanner(System.in);
+	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+	private StringBuffer buffer = new StringBuffer();
 
-	public static char input;
-
-	public InputMachine() {
-		System.out.println("input");
-	}
+	private boolean isRun = true;
+	private int time;
+	private SimpleDateFormat sdf;
 
 	@Override
 	public void run() {
-		System.out.println(">>>>");
-		while (true) {
-			input = scan.next().charAt(0);
+		sdf = new SimpleDateFormat("HH:mm:ss");
 
-			if (input == 'q') {
-				scan.close();
-				return;
-			}
-		}
-	}
-}
+		System.err.println("[q] STOP");
+		System.err.println("[h] HOLD");
+		System.err.println("[x] RERUN");
 
-class StopWatch implements Runnable { // 시간을 출력, 입력값에 따른 동작 제어
+		while (isRun) {
 
-	private SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-	private int time; // 소요시간 초 출력하는 타임
-	public StopWatch() {
-		System.out.println("stopWatch");
-	}
+			String order = InputManager.getValue();
+			if (order.isBlank()) {
 
-	@Override
-	public void run() {
-		System.err.println("[q] quit [h] hold [x] return");
-		while(true) {
-			
-			if(InputMachine.input != 'h' && InputMachine.input != 'q') {
-				long preTime = System.currentTimeMillis();
-				System.out.printf("%s [%d sec]\n", sdf.format(preTime), ++this.time);
-			}
-			if(InputMachine.input == 'q') {
-				System.out.printf("소요시간 : %d분 %d초 \n", this.time/60, this.time%60);
-				return;
-			}			
-			if(InputMachine.input == 'h') {
-				
-			}			
-			if(InputMachine.input == 'x') {
+			} else if (order.equals("x")) {
 				System.out.println("강제 종료");
-				return;
+				break;
+			} else if (order.equals("q")) {
+				buffer.setLength(0);
+				buffer.append(String.format(">>> %d분 %d초 소요됨", time / 60, time % 60));
+				break;
+			} else if (!order.equals("q") && !order.equals("h")) {
+				buffer.setLength(0);
+				buffer.append(sdf.format(System.currentTimeMillis()));
+				buffer.append(String.format(" [%2d sec]\n", ++time));
+
+				try {
+					writer.append(buffer);
+					writer.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-	}
 
+		try {
+			writer.append(buffer);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
+class InputManager implements Runnable {
+
+	private boolean isRun = true;
+	private static StringBuffer buffer = new StringBuffer();
+	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+	private static String value = "";
+
+	public static String getValue() {
+		return value;
+	}
+
+	public void setValue() {
+		try {
+			buffer.setLength(0);
+			buffer.append(reader.readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		value = buffer.toString();
+	}
+
+	@Override
+	public void run() {
+
+		while (isRun) {
+			setValue();
+			if (value.equals("q")) {
+				isRun = false;
+				break;
+			}
+
+		}
+		try {
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+class Stopwatch {
+
+	private Stopwatch() {
+	}
+
+	private static Stopwatch instance = new Stopwatch();
+
+	public static Stopwatch getInstance() {
+		return instance;
+	}
+
+	public void run() {
+		Thread timer = new Thread(new Timer());
+		timer.start();
+
+		Thread input = new Tfhread(new InputManager());
+		input.start();
+	}
+}
 public class _05쓰레드실습 {
 	public static void main(String[] args) {
 
-		new Thread(new InputMachine()).start();
-		new Thread(new StopWatch()).start();
+		Stopwatch stopwatch = Stopwatch.getInstance();
+		stopwatch.run();
 
 	}
 }
