@@ -1,4 +1,4 @@
-package _17쓰레드;
+package _04쓰레드이론04;
 
 class Thread1 extends Thread{
 	@Override
