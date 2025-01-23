@@ -1,4 +1,4 @@
-package _04쓰레드이론04;
+package _17쓰레드이론;
 
 class BGMPlay extends Thread{
 	
