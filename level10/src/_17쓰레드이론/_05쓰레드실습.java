@@ -121,7 +121,7 @@ class Stopwatch {
 		Thread timer = new Thread(new Timer());
 		timer.start();
 
-		Thread input = new Tfhread(new InputManager());
+		Thread input = new Thread(new InputManager());
 		input.start();
 	}
 }
